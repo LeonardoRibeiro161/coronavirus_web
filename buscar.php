@@ -12,6 +12,8 @@ $confirmados = $final["suspects"];
 $mortos = $final["deaths"];
 $recusados = $final["refuses"];
 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -141,16 +143,13 @@ var myChart = new Chart(ctx, {
         }
     }
 });
-</script> 
+</script>
+<br>
 <h6><?php echo "Ultima atualizacao em: ".$final["datetime"]?></h6>      
 </body>
-<footer class="page-footer font-small blue">
-
-<!-- Copyright -->
-<div class="footer-copyright text-center py-3">© 2020 Copyright:
-  <a href="">Leonardo Ribeiro</a>
-</div>
-<!-- Copyright -->
-
-</footer>  
+<footer id="sticky-footer" class="py-4 bg-secondary text-white-50">
+    <div class="container text-center">
+      <small>Copyright &copy; Leodev</small>
+    </div>
+  </footer>
 </html>

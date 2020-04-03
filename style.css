@@ -57,3 +57,7 @@
     font-size: 18px;
   }
 
+  #sticky-footer {
+    flex-shrink: none;
+    background: #007bff
+  }

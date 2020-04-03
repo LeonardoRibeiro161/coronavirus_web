@@ -143,14 +143,13 @@ var myChart = new Chart(ctx, {
     }
 });
 </script>
-           
+<br>           
 <h6><?php echo "Ultima atualizacao em:".$final['data']["updated_at"];?></h6>             
 </body>
-<footer class="page-footer font-small blue">
-<div class="footer-copyright text-center py-3">© 2020 Copyright:
-  <a href="">Leonardo Ribeiro</a>
-</div>
+<footer id="sticky-footer" class="py-4 bg-secondary text-white-50">
+    <div class="container text-center">
+      <small>Copyright &copy; Leodev</small>
+    </div>
+  </footer>
 
-
-</footer>  
 </html>
