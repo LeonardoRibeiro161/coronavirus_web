@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $url = "https://covid19-brazil-api.now.sh/api/report/v1/brazil/";
 
@@ -10,6 +11,8 @@ $final = json_decode($result, true);
 $suspeitos =  $final['data']['cases']; 
 $confirmados = $final['data']["confirmed"];
 $mortos = $final['data']["deaths"];
+$recuperados = $final['data']['recovered'];
+$_SESSION['pais'] = $final['data']["country"];
 
 
 ?>
@@ -53,8 +56,11 @@ $mortos = $final['data']["deaths"];
                 </div>
               </nav>
             <br>
-            <center><h5><?php echo "Casos confirmados no ".$final['data']["country"];?></h5></center>
-            
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page"><?php echo $final['data']["country"];?></li>
+              </ol>
+            </nav>
             <br>
             <div class="container">
                     <div class="row">
@@ -81,6 +87,14 @@ $mortos = $final['data']["deaths"];
                         <span class="count-name">Mortes</span>
                       </div>
                     </div>
+
+                    <div class="col-md-3">
+                      <div class="card-counter info bg-success">
+                        <i class="fa fa-users"></i>
+                        <span class="count-numbers"><?php echo $recuperados; ?></span>
+                        <span class="count-name">Recuperados</span>
+                      </div>
+                    </div>
                   </div>
             </div>
             <br>
@@ -95,10 +109,10 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Casos confirmados', 'Casos Suspeitos', 'Mortes'],
+        labels: ['Casos confirmados', 'Casos Suspeitos', 'Mortes', 'Recuperados'],
         datasets: [{
             label: '# Casos',
-            data: [<?php echo $suspeitos; ?>, <?php echo $confirmados; ?>, <?php echo $mortos; ?>],
+            data: [<?php echo $suspeitos; ?>, <?php echo $confirmados; ?>, <?php echo $mortos; ?>,<?php echo $recuperados; ?>],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -130,15 +144,13 @@ var myChart = new Chart(ctx, {
 });
 </script>
            
-          
+<h6><?php echo "Ultima atualizacao em:".$final['data']["updated_at"];?></h6>             
 </body>
 <footer class="page-footer font-small blue">
-
-<!-- Copyright -->
 <div class="footer-copyright text-center py-3">© 2020 Copyright:
   <a href="">Leonardo Ribeiro</a>
 </div>
-<!-- Copyright -->
+
 
 </footer>  
 </html>

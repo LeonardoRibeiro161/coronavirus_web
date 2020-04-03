@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $uf = $_GET['pesquisa'];
 $url = "https://covid19-brazil-api.now.sh/api/report/v1/brazil/uf/".$uf;
 
@@ -10,6 +10,8 @@ $final = json_decode($result, true);
 $suspeitos =  $final["cases"]; 
 $confirmados = $final["suspects"];
 $mortos = $final["deaths"];
+$recusados = $final["refuses"];
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -51,7 +53,13 @@ $mortos = $final["deaths"];
                 </div>
               </nav>
             <br>
-            <center><h5><?php echo "Casos confirmados em ".$final["state"]?></h5></center>
+            
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.php"><?php echo $_SESSION['pais']; ?></a></li>
+                <li class="breadcrumb-item"><a href="#"><?php echo $final["state"];?></a></li>
+              </ol>
+            </nav>
             <br>
             <div class="container">
                     <div class="row">
@@ -78,6 +86,14 @@ $mortos = $final["deaths"];
                         <span class="count-name">Mortes</span>
                       </div>
                     </div>
+
+                    <div class="col-md-3">
+                      <div class="card-counter info bg-success">
+                        <i class="fa fa-users"></i>
+                        <span class="count-numbers"><?php echo $recusados; ?></span>
+                        <span class="count-name">Recusados</span>
+                      </div>
+                    </div>
                   </div>
             </div>
             <br>
@@ -92,10 +108,10 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Casos confirmados', 'Casos Suspeitos', 'Mortes'],
+        labels: ['Casos confirmados', 'Casos Suspeitos', 'Mortes', 'Recusados'],
         datasets: [{
             label: '# Casos',
-            data: [<?php echo $suspeitos; ?>, <?php echo $confirmados; ?>, <?php echo $mortos; ?>],
+            data: [<?php echo $suspeitos; ?>, <?php echo $confirmados; ?>, <?php echo $mortos; ?>, <?php echo $recusados; ?>],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -125,7 +141,8 @@ var myChart = new Chart(ctx, {
         }
     }
 });
-</script>        
+</script> 
+<h6><?php echo "Ultima atualizacao em: ".$final["datetime"]?></h6>      
 </body>
 <footer class="page-footer font-small blue">
 
