@@ -14,7 +14,6 @@ $mortos = $final['data']["deaths"];
 $recuperados = $final['data']['recovered'];
 $_SESSION['pais'] = $final['data']["country"];
 
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -32,9 +31,9 @@ $_SESSION['pais'] = $final['data']["country"];
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
     
-    <script type="text/javascript" src="chart.js"></script>
+
 </head>
-<body>
+<body >
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#"> Status CoronaVirus Brasil</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +45,7 @@ $_SESSION['pais'] = $final['data']["country"];
                       <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Estado</a>
+                      <a class="nav-link" href="estado.php">Estados</a>
                     </li>
                   </ul>
                   <form class="form-inline my-2 my-lg-0" action="buscar.php">

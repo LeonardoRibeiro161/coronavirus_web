@@ -12,8 +12,6 @@ $confirmados = $final["suspects"];
 $mortos = $final["deaths"];
 $recusados = $final["refuses"];
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -30,8 +28,6 @@ $recusados = $final["refuses"];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
-    
-    <script type="text/javascript" src="chart.js"></script>
 </head>
 <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -42,10 +38,10 @@ $recusados = $final["refuses"];
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Estado</a>
+                      <a class="nav-link" href="estado.php">Estados</a>
                     </li>
                   </ul>
                   <form class="form-inline my-2 my-lg-0" action="buscar.php">
